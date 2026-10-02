@@ -1,131 +1,941 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ValleyBuilt | Fresno</title>
+<title>ValleyBuilt — Fresno</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: white;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        nav {
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+body {
+    background: #080808;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
 
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
+/* ================= NAVBAR ================= */
 
-        .hero h1 {
-            font-size: clamp(50px, 8vw, 100px);
-            margin-bottom: 20px;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
 
-        .hero span {
-            color: #888;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .hero p {
-            font-size: 20px;
-            color: #aaa;
-            margin-bottom: 30px;
-        }
+    padding: 0 6%;
 
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
+    background: rgba(8,8,8,.75);
+    backdrop-filter: blur(15px);
 
-        section {
-            padding: 80px 8%;
-            text-align: center;
-        }
+    border-bottom: 1px solid rgba(255,255,255,.08);
 
-        section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
+    z-index: 1000;
+}
 
-        section p {
-            color: #aaa;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.7;
-        }
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
 
-        footer {
-            padding: 30px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-    </style>
+.logo span {
+    color: #888;
+}
+
+.navlinks {
+    display: flex;
+    gap: 35px;
+}
+
+.navlinks a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.navlinks a:hover {
+    color: white;
+}
+
+.cart {
+    border: 1px solid #333;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 7% 80px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.heroText {
+    width: 48%;
+    z-index: 5;
+}
+
+.smallTitle {
+    color: #888;
+    letter-spacing: 5px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 8vw, 125px);
+    line-height: .85;
+    letter-spacing: -7px;
+    margin-bottom: 35px;
+}
+
+.hero h1 span {
+    color: #777;
+}
+
+.hero p {
+    color: #999;
+    font-size: 17px;
+    max-width: 450px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.shopButton {
+    display: inline-block;
+
+    background: white;
+    color: black;
+
+    padding: 17px 30px;
+
+    border-radius: 40px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: .35s;
+}
+
+.shopButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255,255,255,.15);
+}
+
+/* ================= PRODUCT AREA ================= */
+
+.productArea {
+    position: absolute;
+    right: 5%;
+    width: 50%;
+    height: 700px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,.13),
+        transparent 65%
+    );
+
+    filter: blur(20px);
+}
+
+/* ================= CLOTHING ================= */
+
+.clothing {
+    position: absolute;
+
+    width: 360px;
+    height: 440px;
+
+    transition: transform .15s ease-out;
+
+    animation: floating 5s ease-in-out infinite;
+
+    cursor: pointer;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(2deg);
+    }
+
+}
+
+/* Shirt */
+
+.shirt {
+    position: absolute;
+
+    width: 260px;
+    height: 300px;
+
+    left: 50%;
+    top: 60px;
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        145deg,
+        #202020,
+        #080808
+    );
+
+    clip-path: polygon(
+        25% 0,
+        40% 10%,
+        60% 10%,
+        75% 0,
+        100% 22%,
+        82% 38%,
+        72% 27%,
+        72% 100%,
+        28% 100%,
+        28% 27%,
+        18% 38%,
+        0 22%
+    );
+
+    box-shadow:
+        0 40px 70px rgba(0,0,0,.7);
+
+}
+
+.shirt::after {
+
+    content: "VALLEYBUILT";
+
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%,-50%);
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+
+    color: white;
+
+    white-space: nowrap;
+
+}
+
+/* Second product */
+
+.clothing.two {
+    transform: scale(.75) translate(200px,80px);
+    opacity: .55;
+
+    animation-delay: -2s;
+
+    z-index: -1;
+}
+
+.clothing.two .shirt {
+    background:
+        linear-gradient(
+            145deg,
+            #383838,
+            #111
+        );
+}
+
+/* Third product */
+
+.clothing.three {
+    transform: scale(.6) translate(-230px,120px);
+    opacity: .3;
+
+    animation-delay: -3s;
+
+    z-index: -2;
+}
+
+/* ================= COLLECTION ================= */
+
+.collection {
+
+    padding: 130px 7%;
+
+    background: #0c0c0c;
+
+}
+
+.sectionTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 60px;
+}
+
+.sectionTitle h2 {
+
+    font-size: 55px;
+
+    letter-spacing: -3px;
+
+}
+
+.sectionTitle p {
+
+    color: #777;
+
+}
+
+/* PRODUCT GRID */
+
+.products {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 25px;
+
+}
+
+.product {
+
+    background: #141414;
+
+    border: 1px solid #222;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    transition: .4s;
+
+    cursor: pointer;
+
+}
+
+.product:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    border-color: #555;
+
+}
+
+.productImage {
+
+    height: 400px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #292929,
+            #111 70%
+        );
+
+}
+
+.productImage .shirt {
+
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    transform: scale(.8);
+
+}
+
+.productInfo {
+
+    padding: 25px;
+
+}
+
+.productInfo h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.productInfo p {
+
+    color: #777;
+
+    margin-bottom: 20px;
+
+}
+
+.price {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.price strong {
+
+    font-size: 20px;
+
+}
+
+.add {
+
+    background: white;
+
+    color: black;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+}
+
+/* ================= STORY ================= */
+
+.story {
+
+    min-height: 70vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 10%;
+
+}
+
+.story h2 {
+
+    font-size: clamp(50px,7vw,100px);
+
+    letter-spacing: -5px;
+
+    margin-bottom: 30px;
+
+}
+
+.story p {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #888;
+
+    line-height: 1.8;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    padding: 40px 7%;
+
+    border-top: 1px solid #222;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px) {
+
+    .navlinks {
+        display:none;
+    }
+
+    .hero {
+        flex-direction:column;
+        padding-top:140px;
+    }
+
+    .heroText {
+        width:100%;
+        text-align:center;
+    }
+
+    .hero p {
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .productArea {
+        position:relative;
+        width:100%;
+        right:auto;
+        height:500px;
+    }
+
+    .products {
+        grid-template-columns:1fr;
+    }
+
+    .sectionTitle {
+        display:block;
+    }
+
+    .sectionTitle p {
+        margin-top:15px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">ValleyBuilt</div>
-        <div>Fresno, CA</div>
-    </nav>
+<!-- NAVIGATION -->
 
-    <div class="hero">
-        <div>
-            <h1>BUILT IN <span>THE VALLEY.</span></h1>
+<nav>
 
-            <p>
-                Strength. Discipline. Community.
-                <br>
-                A Fresno-based fitness experience.
-            </p>
-
-            <a href="#about" class="button">LEARN MORE</a>
-        </div>
+    <div class="logo">
+        Valley<span>Built</span>
     </div>
 
-    <section id="about">
-        <h2>Built Different.</h2>
+    <div class="navlinks">
+
+        <a href="#shop">Shop</a>
+
+        <a href="#story">Our Story</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
+
+    <div class="cart">
+        🛒 <span id="cartCount">0</span>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="heroText">
+
+        <div class="smallTitle">
+            FRESNO · CALIFORNIA
+        </div>
+
+        <h1>
+            BUILT<br>
+            <span>IN THE VALLEY.</span>
+        </h1>
 
         <p>
-            ValleyBuilt is a fitness community built around
-            consistency, strength, and progress. From the
-            Central Valley, for people who refuse to stay the same.
+            Training apparel made for the people
+            who put in the work. From the Central
+            Valley to wherever you're going next.
         </p>
-    </section>
 
-    <footer>
-        © 2026 ValleyBuilt · Fresno, California
-    </footer>
+        <a
+            href="#shop"
+            class="shopButton"
+        >
+            SHOP THE COLLECTION →
+        </a>
+
+    </div>
+
+
+    <!-- MOVING CLOTHING -->
+
+    <div
+        class="productArea"
+        id="productArea"
+    >
+
+        <div class="glow"></div>
+
+        <div class="clothing">
+
+            <div class="shirt"></div>
+
+        </div>
+
+        <div class="clothing two">
+
+            <div class="shirt"></div>
+
+        </div>
+
+        <div class="clothing three">
+
+            <div class="shirt"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section
+    class="collection"
+    id="shop"
+>
+
+    <div class="sectionTitle">
+
+        <h2>
+            THE COLLECTION
+        </h2>
+
+        <p>
+            Built for the grind.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product">
+
+            <div class="productImage">
+
+                <div class="clothing">
+
+                    <div class="shirt"></div>
+
+                </div>
+
+            </div>
+
+            <div class="productInfo">
+
+                <h3>
+                    ValleyBuilt Core Tee
+                </h3>
+
+                <p>
+                    Heavyweight training tee
+                </p>
+
+                <div class="price">
+
+                    <strong>
+                        $35
+                    </strong>
+
+                    <button
+                        class="add"
+                        onclick="addToCart()"
+                    >
+                        ADD
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product">
+
+            <div class="productImage">
+
+                <div class="clothing">
+
+                    <div class="shirt"></div>
+
+                </div>
+
+            </div>
+
+            <div class="productInfo">
+
+                <h3>
+                    ValleyBuilt Performance
+                </h3>
+
+                <p>
+                    Lightweight training shirt
+                </p>
+
+                <div class="price">
+
+                    <strong>
+                        $42
+                    </strong>
+
+                    <button
+                        class="add"
+                        onclick="addToCart()"
+                    >
+                        ADD
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product">
+
+            <div class="productImage">
+
+                <div class="clothing">
+
+                    <div class="shirt"></div>
+
+                </div>
+
+            </div>
+
+            <div class="productInfo">
+
+                <h3>
+                    ValleyBuilt Essential
+                </h3>
+
+                <p>
+                    Everyday gym essential
+                </p>
+
+                <div class="price">
+
+                    <strong>
+                        $30
+                    </strong>
+
+                    <button
+                        class="add"
+                        onclick="addToCart()"
+                    >
+                        ADD
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- STORY -->
+
+<section
+    class="story"
+    id="story"
+>
+
+    <div>
+
+        <h2>
+            BUILT DIFFERENT.
+        </h2>
+
+        <p>
+            ValleyBuilt was created in Fresno for
+            people who believe progress isn't given.
+            It's earned one workout, one rep and one
+            day at a time.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div>
+        © 2026 ValleyBuilt
+    </div>
+
+    <div>
+        Fresno, California
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ================= CART ================= */
+
+let cart = 0;
+
+function addToCart() {
+
+    cart++;
+
+    document.getElementById(
+        "cartCount"
+    ).innerText = cart;
+
+}
+
+
+/* ================= MOUSE PARALLAX ================= */
+
+const area =
+    document.getElementById(
+        "productArea"
+    );
+
+const clothing =
+    document.querySelectorAll(
+        ".clothing"
+    );
+
+area.addEventListener(
+    "mousemove",
+    (event) => {
+
+        const rect =
+            area.getBoundingClientRect();
+
+        const x =
+            event.clientX -
+            rect.left;
+
+        const y =
+            event.clientY -
+            rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const moveX =
+            (x-centerX) / 20;
+
+        const moveY =
+            (y-centerY) / 20;
+
+        clothing.forEach(
+            (item,index) => {
+
+                const multiplier =
+                    index === 0
+                    ? 1
+                    : index + 1;
+
+                item.style.transform =
+                    `translate(${moveX * multiplier}px,
+                    ${moveY * multiplier}px)`;
+
+            }
+        );
+
+    }
+);
+
+
+/* ================= RESET ================= */
+
+area.addEventListener(
+    "mouseleave",
+    () => {
+
+        clothing.forEach(
+            item => {
+
+                item.style.transform =
+                    "";
+
+            }
+        );
+
+    }
+);
+
+</script>
 
 </body>
 </html>
