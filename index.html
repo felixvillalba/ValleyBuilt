@@ -3,939 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070707">
+<meta name="description" content="ValleyBuilt — Built in the Valley. Premium apparel from Fresno, California.">
+<title>ValleyBuilt — Built in the Valley.</title>
 
-<title>ValleyBuilt — Fresno</title>
+<!-- Google model-viewer 4.3.1, verified from the official project documentation. -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #080808;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-}
-
-/* ================= NAVBAR ================= */
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 6%;
-
-    background: rgba(8,8,8,.75);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
-
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: #888;
-}
-
-.navlinks {
-    display: flex;
-    gap: 35px;
-}
-
-.navlinks a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .3s;
-}
-
-.navlinks a:hover {
-    color: white;
-}
-
-.cart {
-    border: 1px solid #333;
-    padding: 10px 15px;
-    border-radius: 30px;
-}
-
-/* ================= HERO ================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-
-    padding: 120px 7% 80px;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.heroText {
-    width: 48%;
-    z-index: 5;
-}
-
-.smallTitle {
-    color: #888;
-    letter-spacing: 5px;
-    font-size: 12px;
-    margin-bottom: 25px;
-}
-
-.hero h1 {
-    font-size: clamp(60px, 8vw, 125px);
-    line-height: .85;
-    letter-spacing: -7px;
-    margin-bottom: 35px;
-}
-
-.hero h1 span {
-    color: #777;
-}
-
-.hero p {
-    color: #999;
-    font-size: 17px;
-    max-width: 450px;
-    line-height: 1.7;
-    margin-bottom: 35px;
-}
-
-.shopButton {
-    display: inline-block;
-
-    background: white;
-    color: black;
-
-    padding: 17px 30px;
-
-    border-radius: 40px;
-
-    text-decoration: none;
-    font-weight: bold;
-
-    transition: .35s;
-}
-
-.shopButton:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255,255,255,.15);
-}
-
-/* ================= PRODUCT AREA ================= */
-
-.productArea {
-    position: absolute;
-    right: 5%;
-    width: 50%;
-    height: 700px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.glow {
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle,
-        rgba(255,255,255,.13),
-        transparent 65%
-    );
-
-    filter: blur(20px);
-}
-
-/* ================= CLOTHING ================= */
-
-.clothing {
-    position: absolute;
-
-    width: 360px;
-    height: 440px;
-
-    transition: transform .15s ease-out;
-
-    animation: floating 5s ease-in-out infinite;
-
-    cursor: pointer;
-}
-
-@keyframes floating {
-
-    0%,100% {
-        transform: translateY(0) rotate(-2deg);
-    }
-
-    50% {
-        transform: translateY(-25px) rotate(2deg);
-    }
-
-}
-
-/* Shirt */
-
-.shirt {
-    position: absolute;
-
-    width: 260px;
-    height: 300px;
-
-    left: 50%;
-    top: 60px;
-
-    transform: translateX(-50%);
-
-    background: linear-gradient(
-        145deg,
-        #202020,
-        #080808
-    );
-
-    clip-path: polygon(
-        25% 0,
-        40% 10%,
-        60% 10%,
-        75% 0,
-        100% 22%,
-        82% 38%,
-        72% 27%,
-        72% 100%,
-        28% 100%,
-        28% 27%,
-        18% 38%,
-        0 22%
-    );
-
-    box-shadow:
-        0 40px 70px rgba(0,0,0,.7);
-
-}
-
-.shirt::after {
-
-    content: "VALLEYBUILT";
-
-    position: absolute;
-
-    left: 50%;
-    top: 48%;
-
-    transform: translate(-50%,-50%);
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-
-    font-weight: 800;
-
-    color: white;
-
-    white-space: nowrap;
-
-}
-
-/* Second product */
-
-.clothing.two {
-    transform: scale(.75) translate(200px,80px);
-    opacity: .55;
-
-    animation-delay: -2s;
-
-    z-index: -1;
-}
-
-.clothing.two .shirt {
-    background:
-        linear-gradient(
-            145deg,
-            #383838,
-            #111
-        );
-}
-
-/* Third product */
-
-.clothing.three {
-    transform: scale(.6) translate(-230px,120px);
-    opacity: .3;
-
-    animation-delay: -3s;
-
-    z-index: -2;
-}
-
-/* ================= COLLECTION ================= */
-
-.collection {
-
-    padding: 130px 7%;
-
-    background: #0c0c0c;
-
-}
-
-.sectionTitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-
-    margin-bottom: 60px;
-}
-
-.sectionTitle h2 {
-
-    font-size: 55px;
-
-    letter-spacing: -3px;
-
-}
-
-.sectionTitle p {
-
-    color: #777;
-
-}
-
-/* PRODUCT GRID */
-
-.products {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 25px;
-
-}
-
-.product {
-
-    background: #141414;
-
-    border: 1px solid #222;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    transition: .4s;
-
-    cursor: pointer;
-
-}
-
-.product:hover {
-
-    transform:
-        translateY(-12px)
-        scale(1.02);
-
-    border-color: #555;
-
-}
-
-.productImage {
-
-    height: 400px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #292929,
-            #111 70%
-        );
-
-}
-
-.productImage .shirt {
-
-    position: relative;
-
-    left: auto;
-    top: auto;
-
-    transform: scale(.8);
-
-}
-
-.productInfo {
-
-    padding: 25px;
-
-}
-
-.productInfo h3 {
-
-    margin-bottom: 10px;
-
-}
-
-.productInfo p {
-
-    color: #777;
-
-    margin-bottom: 20px;
-
-}
-
-.price {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-}
-
-.price strong {
-
-    font-size: 20px;
-
-}
-
-.add {
-
-    background: white;
-
-    color: black;
-
-    border: none;
-
-    padding: 10px 16px;
-
-    border-radius: 20px;
-
-    cursor: pointer;
-
-}
-
-/* ================= STORY ================= */
-
-.story {
-
-    min-height: 70vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 100px 10%;
-
-}
-
-.story h2 {
-
-    font-size: clamp(50px,7vw,100px);
-
-    letter-spacing: -5px;
-
-    margin-bottom: 30px;
-
-}
-
-.story p {
-
-    max-width: 650px;
-
-    margin: auto;
-
-    color: #888;
-
-    line-height: 1.8;
-
-}
-
-/* ================= FOOTER ================= */
-
-footer {
-
-    padding: 40px 7%;
-
-    border-top: 1px solid #222;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #666;
-
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px) {
-
-    .navlinks {
-        display:none;
-    }
-
-    .hero {
-        flex-direction:column;
-        padding-top:140px;
-    }
-
-    .heroText {
-        width:100%;
-        text-align:center;
-    }
-
-    .hero p {
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .productArea {
-        position:relative;
-        width:100%;
-        right:auto;
-        height:500px;
-    }
-
-    .products {
-        grid-template-columns:1fr;
-    }
-
-    .sectionTitle {
-        display:block;
-    }
-
-    .sectionTitle p {
-        margin-top:15px;
-    }
-
-}
-
+:root{--bg:#070707;--bg2:#0b0b0b;--panel:#111;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.18);--text:#f5f3ed;--muted:#7f7e79;--soft:#c7c3b9;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+::selection{background:#fff;color:#000}
+
+/* NAV */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:62px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 4vw;background:rgba(7,7,7,.60);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo{border:0;background:transparent;color:var(--text);font-size:20px;font-weight:900;letter-spacing:-.06em}
+.logo span{color:#6d6d6d}
+.navlinks{display:flex;gap:44px;font-size:11px;font-weight:750}
+.navlinks a{position:relative;color:#d2d0cb}
+.navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:1px;background:#fff;transition:right .35s var(--ease)}
+.navlinks a:hover:after{right:0}
+.actions{justify-self:end;display:flex;gap:12px;align-items:center}
+.icon-btn{width:28px;height:28px;border:0;background:transparent;color:#ddd;display:grid;place-items:center;position:relative}
+.icon-btn svg{width:17px;height:17px}.count{position:absolute;right:-2px;top:-1px;min-width:13px;height:13px;padding:0 3px;border-radius:99px;background:#f3f0e6;color:#080808;display:grid;place-items:center;font-size:8px;font-weight:900}
+
+/* HERO */
+.hero{min-height:100svh;padding-top:62px;display:grid;grid-template-columns:32% 48% 20%;overflow:hidden;position:relative;background:radial-gradient(circle at 56% 40%,rgba(255,255,255,.07),transparent 34%),linear-gradient(180deg,#070707,#090909 65%,#070707)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:60px 0 70px 4vw;position:relative;z-index:5}
+.eyebrow{font-size:9px;letter-spacing:.42em;text-transform:uppercase;font-weight:800;color:#777;margin-bottom:18px}
+.hero h1{font-size:clamp(60px,7vw,104px);line-height:.82;letter-spacing:-.085em;font-weight:950;max-width:440px}
+.hero h1 span{color:#5d5d5d}
+.hero p{max-width:390px;color:#8a8883;font-size:12px;line-height:1.7;margin:24px 0}
+.cta{display:inline-flex;align-items:center;gap:11px;background:#f4f1e9;color:#070707;width:max-content;padding:14px 16px;border-radius:7px;font-size:9px;font-weight:950;letter-spacing:.15em;transition:transform .35s var(--ease),box-shadow .35s ease}
+.cta:hover{transform:translateY(-3px);box-shadow:0 16px 45px rgba(255,255,255,.12)}
+.badges{display:flex;gap:12px;margin-top:26px;align-items:center;color:#73716a;font-size:9px;letter-spacing:.22em;font-weight:800}.badge{display:grid;place-items:center;width:29px;height:29px;border:1px solid #2a2a2a;border-radius:50%}
+
+/* 3D STAGE */
+.stage{position:relative;display:grid;place-items:center;min-height:640px;perspective:1600px;isolation:isolate}
+.stage:before{content:"";position:absolute;width:80%;height:80%;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 64%);filter:blur(28px);pointer-events:none}
+.stage:after{content:"";position:absolute;left:17%;right:17%;bottom:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(239,234,220,.38),transparent);filter:blur(1px);opacity:.7}
+.model{position:absolute;width:min(390px,31vw);height:min(610px,74vh);background:transparent;--poster-color:transparent;transition:transform .22s var(--ease),opacity .35s ease,filter .35s ease;will-change:transform}
+.model::part(default-progress-bar){display:none}
+.model.main{z-index:5}
+.model.natural{z-index:3;opacity:.46;transform:translate3d(180px,55px,-130px) scale(.72) rotateZ(7deg)}
+.model.brown{z-index:2;opacity:.25;transform:translate3d(-180px,70px,-220px) scale(.60) rotateZ(-7deg)}
+.stage-shadow{position:absolute;bottom:44px;left:50%;width:53%;height:38px;transform:translateX(-50%);border-radius:50%;background:rgba(0,0,0,.72);filter:blur(18px);z-index:1}
+.plinth{position:absolute;bottom:47px;left:50%;transform:translateX(-50%);width:79%;height:25px;background:linear-gradient(180deg,#202020,#0e0e0e);clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);z-index:1;box-shadow:0 30px 55px rgba(0,0,0,.7)}
+.stage-note{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:8px;color:#5f5f5b;letter-spacing:.30em;text-transform:uppercase;z-index:8}
+
+/* VIEWER */
+.viewer{border-left:1px solid var(--line);padding:50px 22px 28px;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,.018),transparent)}
+.viewer-head{display:flex;justify-content:space-between;color:#d5d3cc;font-size:9px;font-weight:800;letter-spacing:.2em}.viewer-head span:last-child{color:#777}
+.viewer-frame{position:relative;margin-top:20px;flex:1;display:grid;place-items:center}
+.big-viewer{width:100%;max-width:265px;height:390px;border:1px solid var(--line2);border-radius:8px;background:#0c0c0c;overflow:hidden;--poster-color:#0c0c0c}
+model-viewer{display:block}
+.viewer-controls{margin-top:10px;border:1px solid var(--line2);border-radius:6px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.viewer-controls button{border:0;background:#111;color:#777;padding:8px;font-size:8px;font-weight:800;letter-spacing:.15em}.viewer-controls button.active{background:#272727;color:#eee}
+.toolrow{display:flex;justify-content:space-between;margin-top:14px;color:#6b6a65;font-size:8px;letter-spacing:.11em;text-transform:uppercase}.toolrow button{border:0;background:none;color:inherit}
+
+/* MARQUEE */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:#0a0a0a}.track{display:flex;width:max-content;gap:44px;padding:13px 0;animation:marquee 27s linear infinite}.track span{font-size:9px;font-weight:850;letter-spacing:.28em;color:#74736e}.track b{color:#aaa69e}@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* COLLECTION */
+.section{padding:72px 4vw 0;background:#090909}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:28px}.kicker{font-size:8px;font-weight:850;letter-spacing:.34em;text-transform:uppercase;color:#76736c;margin-bottom:10px}.section-head h2{font-size:clamp(34px,4vw,50px);line-height:.9;letter-spacing:-.07em}.section-head p{color:#6e6c67;font-size:10px;line-height:1.6;max-width:250px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.card{padding:22px 25px 24px;border-right:1px solid var(--line);position:relative}.card:last-child{border-right:0}.card-view{height:365px;position:relative;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.09),transparent 54%),linear-gradient(180deg,#111,#0c0c0c);border-bottom:1px solid rgba(255,255,255,.05)}
+.card-view model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent;transition:transform .5s var(--ease),filter .4s ease}.card:hover .card-view model-viewer{transform:translateY(-7px) scale(1.02);filter:brightness(1.08)}
+.card-data{padding-top:17px}.card-top{display:flex;justify-content:space-between}.name{font-size:11px;font-weight:850;letter-spacing:.02em}.sub{font-size:8px;color:#6a6964;letter-spacing:.14em;text-transform:uppercase;margin-top:7px}.price{font-size:10px;font-weight:850}.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.dots{display:flex;gap:5px}.dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,.2)}.dot.black{background:#171717}.dot.cream{background:#d3cec2}.dot.brown{background:#4a3b30}.add,.view3d{border:1px solid var(--line2);background:transparent;color:#fff;border-radius:4px;padding:8px 11px;font-size:8px;font-weight:850;letter-spacing:.15em;transition:all .3s var(--ease)}.add:hover,.view3d:hover{background:#fff;color:#000;transform:translateY(-2px)}
+
+/* MATERIAL / EDITORIAL */
+.material{display:grid;grid-template-columns:1.2fr .9fr .9fr;margin-top:0;border-top:1px solid var(--line)}.mat{min-height:290px;border-right:1px solid var(--line);position:relative;overflow:hidden}.mat:last-child{border-right:0}.mat img{width:100%;height:100%;object-fit:cover;opacity:.52;filter:saturate(.65) contrast(1.02);transition:transform .7s var(--ease),opacity .6s ease}.mat:hover img{transform:scale(1.04);opacity:.67}.mat-copy{position:absolute;left:25px;bottom:25px;z-index:2}.mat-copy strong{font-size:11px;line-height:1.35;letter-spacing:.16em}.mat-copy p{font-size:8px;color:#797871;line-height:1.8;max-width:200px;margin-top:9px}.mat-center{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.mat-center .num{font-size:58px;font-weight:950;letter-spacing:-.06em}.mat-center span{display:block;color:#777;font-size:8px;letter-spacing:.32em;margin-top:6px}
+
+/* STORY */
+.story{padding:95px 4vw 100px;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;border-top:1px solid var(--line);background:#090909}.story h2{font-size:clamp(60px,8vw,104px);line-height:.82;letter-spacing:-.08em}.story p{max-width:350px;color:#7e7d78;font-size:11px;line-height:1.85}.story a{display:inline-flex;margin-top:18px;border:1px solid var(--line2);padding:10px 12px;border-radius:4px;font-size:8px;font-weight:850;letter-spacing:.16em}.story a:hover{background:#fff;color:#000}
+footer{display:flex;justify-content:space-between;padding:25px 4vw;border-top:1px solid var(--line);color:#5d5c57;font-size:8px;font-weight:750;letter-spacing:.15em;text-transform:uppercase;background:#070707}
+
+/* PRODUCT MODAL */
+.modal{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s ease}.modal.open{opacity:1;pointer-events:auto}.modal-inner{width:min(980px,94vw);height:min(700px,90vh);background:#0d0d0d;border:1px solid var(--line2);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;box-shadow:0 40px 120px rgba(0,0,0,.75);transform:translateY(18px) scale(.98);transition:transform .45s var(--ease)}.modal.open .modal-inner{transform:none}.modal-view{min-height:0;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.09),transparent 54%),#0b0b0b;display:grid;place-items:center}.modal-model{width:100%;height:100%}.modal-info{padding:34px;display:flex;flex-direction:column}.close{align-self:flex-end;border:1px solid var(--line2);background:transparent;color:#eee;width:34px;height:34px;border-radius:50%;font-size:18px}.modal-info .kicker{margin-top:34px}.modal-info h3{font-size:38px;line-height:.9;letter-spacing:-.06em}.modal-info p{color:#7e7d78;font-size:11px;line-height:1.8;margin-top:17px;max-width:330px}.modal-price{font-size:18px;font-weight:850;margin-top:25px}.modal-actions{display:flex;gap:10px;margin-top:auto}.modal-actions button{flex:1}.size-row{display:flex;gap:7px;margin-top:20px;flex-wrap:wrap}.size{min-width:40px;border:1px solid var(--line2);background:transparent;color:#aaa;padding:8px 9px;border-radius:4px;font-size:9px}.size.active,.size:hover{background:#fff;color:#000}
+.toast{position:fixed;right:18px;bottom:18px;z-index:2500;background:rgba(15,15,15,.95);border:1px solid var(--line2);padding:10px 13px;border-radius:6px;color:#e9e7df;font-size:9px;opacity:0;transform:translateY(15px);transition:all .35s var(--ease);pointer-events:none}.toast.show{opacity:1;transform:none}
+
+@media(max-width:1000px){.hero{grid-template-columns:42% 58%}.viewer{display:none}.model{width:min(440px,52vw)}.hero-copy{padding-right:20px}.products{grid-template-columns:1fr}.card{border-right:0;border-bottom:1px solid var(--line)}.material{grid-template-columns:1fr}.mat{border-right:0;border-bottom:1px solid var(--line)}.story{grid-template-columns:1fr;gap:25px}}
+@media(max-width:720px){.navbar{grid-template-columns:1fr auto}.navlinks{display:none}.hero{grid-template-columns:1fr;min-height:auto}.hero-copy{text-align:center;align-items:center;padding:100px 7vw 30px}.hero h1{max-width:700px}.hero p{max-width:490px}.badges{justify-content:center}.stage{min-height:520px}.model{width:320px;height:430px}.model.natural{transform:translate3d(115px,40px,-130px) scale(.67) rotateZ(7deg)}.model.brown{transform:translate3d(-115px,55px,-220px) scale(.56) rotateZ(-7deg)}.modal-inner{grid-template-columns:1fr;height:min(760px,92vh)}.modal-view{height:56vh}.modal-info{padding:23px}.modal-info .kicker{margin-top:20px}.modal-actions{margin-top:25px}}
+@media(max-width:520px){.hero h1{font-size:56px}.stage{min-height:450px}.model{width:275px;height:390px}.model.natural{transform:translate3d(87px,35px,-130px) scale(.58) rotateZ(7deg)}.model.brown{transform:translate3d(-90px,50px,-220px) scale(.49) rotateZ(-7deg)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
+<body id="top">
 
-<body>
+<header class="navbar">
+  <button class="logo" id="home">Valley<span>Built</span></button>
+  <nav class="navlinks"><a href="#shop">Shop</a><a href="#story">Our Story</a><a href="#contact">Contact</a></nav>
+  <div class="actions">
+    <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
+    <button class="icon-btn" id="cart" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.5 4h2l2.2 10.1a2 2 0 0 0 1.9 1.6h7.8a2 2 0 0 0 1.9-1.5L21 7H6.4"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="count" id="count">0</span></button>
+    <button class="icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
 
-<!-- NAVIGATION -->
-
-<nav>
-
-    <div class="logo">
-        Valley<span>Built</span>
-    </div>
-
-    <div class="navlinks">
-
-        <a href="#shop">Shop</a>
-
-        <a href="#story">Our Story</a>
-
-        <a href="#contact">Contact</a>
-
-    </div>
-
-    <div class="cart">
-        🛒 <span id="cartCount">0</span>
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-
+<main>
 <section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Fresno · California</div>
+    <h1>BUILT<br><span>IN THE<br>VALLEY.</span></h1>
+    <p>Premium training apparel with a raw Central Valley point of view. Explore the collection in interactive 3D.</p>
+    <a class="cta" href="#shop">SHOP THE COLLECTION <span>→</span></a>
+    <div class="badges"><div class="badge">V</div><div class="badge">559</div><span>559</span><span>FRESNO, CA</span></div>
+  </div>
 
-    <div class="heroText">
+  <div class="stage" id="heroStage">
+    <model-viewer class="model brown" src="models/orchard-brown.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="11deg" interaction-prompt="none" shadow-intensity="1" exposure="0.8" camera-orbit="-10deg 75deg 3.3m" alt="ValleyBuilt Orchard Brown 3D shirt"></model-viewer>
+    <model-viewer class="model natural" src="models/fresno-natural.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="14deg" interaction-prompt="none" shadow-intensity="1" exposure="0.85" camera-orbit="10deg 75deg 3.2m" alt="ValleyBuilt Fresno Natural 3D shirt"></model-viewer>
+    <model-viewer class="model main" id="heroModel" src="models/valleybuilt-black.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="18deg" interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3m" field-of-view="30deg" alt="ValleyBuilt Washed Black 3D shirt"></model-viewer>
+    <div class="stage-shadow"></div><div class="plinth"></div><div class="stage-note">drag · rotate · inspect</div>
+  </div>
 
-        <div class="smallTitle">
-            FRESNO · CALIFORNIA
-        </div>
-
-        <h1>
-            BUILT<br>
-            <span>IN THE VALLEY.</span>
-        </h1>
-
-        <p>
-            Training apparel made for the people
-            who put in the work. From the Central
-            Valley to wherever you're going next.
-        </p>
-
-        <a
-            href="#shop"
-            class="shopButton"
-        >
-            SHOP THE COLLECTION →
-        </a>
-
+  <aside class="viewer">
+    <div class="viewer-head"><span>360° VIEW</span><span id="viewerIndex">01 / 03</span></div>
+    <div class="viewer-frame">
+      <model-viewer id="bigViewer" class="big-viewer" src="models/valleybuilt-black.glb" camera-controls auto-rotate interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3.1m" field-of-view="32deg" alt="ValleyBuilt interactive 3D product"></model-viewer>
     </div>
-
-
-    <!-- MOVING CLOTHING -->
-
-    <div
-        class="productArea"
-        id="productArea"
-    >
-
-        <div class="glow"></div>
-
-        <div class="clothing">
-
-            <div class="shirt"></div>
-
-        </div>
-
-        <div class="clothing two">
-
-            <div class="shirt"></div>
-
-        </div>
-
-        <div class="clothing three">
-
-            <div class="shirt"></div>
-
-        </div>
-
-    </div>
-
+    <div class="viewer-controls"><button class="active" id="front">FRONT</button><button id="back">BACK</button></div>
+    <div class="toolrow"><button id="rotate">↻ ROTATE</button><button id="reset">↺ RESET</button><span>☝ DRAG</span></div>
+  </aside>
 </section>
 
+<div class="marquee"><div class="track"><span>VALLEYBUILT <b>·</b> 559 <b>·</b> FRESNO <b>·</b> CALIFORNIA <b>·</b> BUILT DIFFERENT <b>·</b></span><span>VALLEYBUILT <b>·</b> 559 <b>·</b> FRESNO <b>·</b> CALIFORNIA <b>·</b> BUILT DIFFERENT <b>·</b></span></div></div>
 
-<!-- COLLECTION -->
+<section class="section" id="shop">
+  <div class="section-head"><div><div class="kicker">Featured collection</div><h2>THE FIRST DROP.</h2></div><p>Heavyweight garments. Muted Valley tones. Now presented as interactive 3D products.</p></div>
 
-<section
-    class="collection"
-    id="shop"
->
+  <div class="products">
+    <article class="card" data-model="models/valleybuilt-black.glb" data-name="ValleyBuilt Tee" data-price="35" data-index="1">
+      <div class="card-view"><model-viewer src="models/valleybuilt-black.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="17deg" interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3.25m" alt="ValleyBuilt Washed Black Tee"></model-viewer></div>
+      <div class="card-data"><div class="card-top"><div><div class="name">VALLEYBUILT TEE</div><div class="sub">Washed Black · Heavyweight</div></div><div class="price">$35</div></div><div class="card-bottom"><div class="dots"><i class="dot black"></i><i class="dot brown"></i></div><button class="view3d">EXPLORE 3D</button></div></div>
+    </article>
 
-    <div class="sectionTitle">
+    <article class="card" data-model="models/fresno-natural.glb" data-name="Fresno Tee" data-price="35" data-index="2">
+      <div class="card-view"><model-viewer src="models/fresno-natural.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="17deg" interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3.25m" alt="Fresno Natural Tee"></model-viewer></div>
+      <div class="card-data"><div class="card-top"><div><div class="name">FRESNO TEE</div><div class="sub">Natural · Heavyweight</div></div><div class="price">$35</div></div><div class="card-bottom"><div class="dots"><i class="dot cream"></i><i class="dot black"></i></div><button class="view3d">EXPLORE 3D</button></div></div>
+    </article>
 
-        <h2>
-            THE COLLECTION
-        </h2>
+    <article class="card" data-model="models/orchard-brown.glb" data-name="Orchard Tee" data-price="38" data-index="3">
+      <div class="card-view"><model-viewer src="models/orchard-brown.glb" camera-controls auto-rotate auto-rotate-delay="0s" rotation-per-second="17deg" interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3.25m" alt="Orchard Vintage Brown Tee"></model-viewer></div>
+      <div class="card-data"><div class="card-top"><div><div class="name">ORCHARD TEE</div><div class="sub">Vintage Brown · Heavyweight</div></div><div class="price">$38</div></div><div class="card-bottom"><div class="dots"><i class="dot brown"></i><i class="dot cream"></i></div><button class="view3d">EXPLORE 3D</button></div></div>
+    </article>
+  </div>
 
-        <p>
-            Built for the grind.
-        </p>
-
-    </div>
-
-
-    <div class="products">
-
-
-        <!-- PRODUCT 1 -->
-
-        <div class="product">
-
-            <div class="productImage">
-
-                <div class="clothing">
-
-                    <div class="shirt"></div>
-
-                </div>
-
-            </div>
-
-            <div class="productInfo">
-
-                <h3>
-                    ValleyBuilt Core Tee
-                </h3>
-
-                <p>
-                    Heavyweight training tee
-                </p>
-
-                <div class="price">
-
-                    <strong>
-                        $35
-                    </strong>
-
-                    <button
-                        class="add"
-                        onclick="addToCart()"
-                    >
-                        ADD
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 2 -->
-
-        <div class="product">
-
-            <div class="productImage">
-
-                <div class="clothing">
-
-                    <div class="shirt"></div>
-
-                </div>
-
-            </div>
-
-            <div class="productInfo">
-
-                <h3>
-                    ValleyBuilt Performance
-                </h3>
-
-                <p>
-                    Lightweight training shirt
-                </p>
-
-                <div class="price">
-
-                    <strong>
-                        $42
-                    </strong>
-
-                    <button
-                        class="add"
-                        onclick="addToCart()"
-                    >
-                        ADD
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 3 -->
-
-        <div class="product">
-
-            <div class="productImage">
-
-                <div class="clothing">
-
-                    <div class="shirt"></div>
-
-                </div>
-
-            </div>
-
-            <div class="productInfo">
-
-                <h3>
-                    ValleyBuilt Essential
-                </h3>
-
-                <p>
-                    Everyday gym essential
-                </p>
-
-                <div class="price">
-
-                    <strong>
-                        $30
-                    </strong>
-
-                    <button
-                        class="add"
-                        onclick="addToCart()"
-                    >
-                        ADD
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
+  <div class="material">
+    <div class="mat"><img src="images/valleybuilt-lookbook.png" alt="ValleyBuilt lookbook"><div class="mat-copy"><strong>MORE THAN APPAREL.<br>A WAY OF LIFE.</strong><p>Quiet graphics. Heavyweight fabric. Fresno-born identity.</p></div></div>
+    <div class="mat"><img src="images/valleybuilt-lookbook.png" alt="" style="object-position:50% 88%;opacity:.28"><div class="mat-center"><div><div class="num">559</div><span>FRESNO · CALIFORNIA</span></div></div></div>
+    <div class="mat"><img src="images/valleybuilt-lookbook.png" alt="" style="object-position:100% 100%;opacity:.26"><div class="mat-copy"><strong>PREMIUM<br>HEAVYWEIGHT<br>COTTON.</strong><p>Built for training. Built for the Valley. Clean enough for the street.</p></div></div>
+  </div>
 </section>
 
-
-<!-- STORY -->
-
-<section
-    class="story"
-    id="story"
->
-
-    <div>
-
-        <h2>
-            BUILT DIFFERENT.
-        </h2>
-
-        <p>
-            ValleyBuilt was created in Fresno for
-            people who believe progress isn't given.
-            It's earned one workout, one rep and one
-            day at a time.
-        </p>
-
-    </div>
-
+<section class="story" id="story">
+  <div><div class="kicker">The ValleyBuilt standard</div><h2>BUILT<br>DIFFERENT.</h2></div>
+  <div><p>ValleyBuilt is a Fresno-born training and streetwear concept focused on consistency, restraint and work ethic. The first collection pairs durable silhouettes with subtle Central Valley references.</p><a href="#contact">OUR STORY →</a></div>
 </section>
+</main>
 
+<footer id="contact"><span>© 2026 ValleyBuilt</span><span>Fresno · California · 559</span></footer>
 
-<!-- FOOTER -->
-
-<footer id="contact">
-
-    <div>
-        © 2026 ValleyBuilt
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-inner">
+    <div class="modal-view"><model-viewer id="modalModel" class="modal-model" camera-controls auto-rotate rotation-per-second="12deg" interaction-prompt="none" shadow-intensity="1" exposure="0.9" camera-orbit="0deg 75deg 3.1m" field-of-view="30deg" alt="ValleyBuilt product 3D viewer"></model-viewer></div>
+    <div class="modal-info">
+      <button class="close" id="close" aria-label="Close">×</button>
+      <div class="kicker">Interactive product</div>
+      <h3 id="modalName">VALLEYBUILT TEE.</h3>
+      <p>Grab the model and spin it through a full view. Use the front/back controls, zoom, or drag to inspect the silhouette and graphic placement.</p>
+      <div class="modal-price" id="modalPrice">$35</div>
+      <div class="size-row"><button class="size active">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button><button class="size">2XL</button></div>
+      <div class="modal-actions"><button class="add" id="addModal">ADD TO CART</button></div>
     </div>
+  </div>
+</div>
 
-    <div>
-        Fresno, California
-    </div>
-
-</footer>
-
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+(() => {
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const products=[
+    {name:'VALLEYBUILT TEE',price:35,model:'models/valleybuilt-black.glb'},
+    {name:'FRESNO TEE',price:35,model:'models/fresno-natural.glb'},
+    {name:'ORCHARD TEE',price:38,model:'models/orchard-brown.glb'}
+  ];
+  let cartCount=0, cartItems=[];
+  const count=$('#count'), cart=$('#cart'), toast=$('#toast');
+  let toastTimer;
+  function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1800)}
+  function addToCart(item){cartCount++;cartItems.push(item);count.textContent=cartCount;showToast(`${item.name} added to cart`);cart.classList.remove('bump');void cart.offsetWidth;cart.classList.add('bump')}
+  cart.addEventListener('click',()=>showToast(cartCount?`${cartCount} item${cartCount===1?'':'s'} in cart`:'Your cart is empty'));
+  $('#home').addEventListener('click',()=>scrollTo({top:0,behavior:prefersReduced?'auto':'smooth'}));
 
-/* ================= CART ================= */
+  // Hero is 3D natively; pointer tilt adds a layer without fighting user drag controls.
+  const hero=$('#heroStage'), main=$('#heroModel');
+  if(!prefersReduced && matchMedia('(pointer:fine)').matches){
+    let tx=0,ty=0,cx=0,cy=0;
+    const loop=()=>{cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;main.style.transform=`translate3d(${cx*.18}px,${cy*.12}px,0) rotateZ(${cx*.012}deg)`;requestAnimationFrame(loop)};
+    hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*34;ty=((e.clientY-r.top)/r.height-.5)*26});
+    hero.addEventListener('pointerleave',()=>{tx=0;ty=0}); loop();
+  }
 
-let cart = 0;
+  // Viewer controls.
+  const big=$('#bigViewer');
+  $('#front').addEventListener('click',()=>{big.cameraOrbit='0deg 75deg 3.1m';$('#front').classList.add('active');$('#back').classList.remove('active')});
+  $('#back').addEventListener('click',()=>{big.cameraOrbit='180deg 75deg 3.1m';$('#back').classList.add('active');$('#front').classList.remove('active')});
+  $('#rotate').addEventListener('click',()=>{big.autoRotate=!big.autoRotate;showToast(big.autoRotate?'Auto-rotate on':'Auto-rotate off')});
+  $('#reset').addEventListener('click',()=>{big.cameraOrbit='0deg 75deg 3.1m';big.fieldOfView='32deg';$('#front').classList.add('active');$('#back').classList.remove('active')});
 
-function addToCart() {
-
-    cart++;
-
-    document.getElementById(
-        "cartCount"
-    ).innerText = cart;
-
-}
-
-
-/* ================= MOUSE PARALLAX ================= */
-
-const area =
-    document.getElementById(
-        "productArea"
-    );
-
-const clothing =
-    document.querySelectorAll(
-        ".clothing"
-    );
-
-area.addEventListener(
-    "mousemove",
-    (event) => {
-
-        const rect =
-            area.getBoundingClientRect();
-
-        const x =
-            event.clientX -
-            rect.left;
-
-        const y =
-            event.clientY -
-            rect.top;
-
-        const centerX =
-            rect.width / 2;
-
-        const centerY =
-            rect.height / 2;
-
-        const moveX =
-            (x-centerX) / 20;
-
-        const moveY =
-            (y-centerY) / 20;
-
-        clothing.forEach(
-            (item,index) => {
-
-                const multiplier =
-                    index === 0
-                    ? 1
-                    : index + 1;
-
-                item.style.transform =
-                    `translate(${moveX * multiplier}px,
-                    ${moveY * multiplier}px)`;
-
-            }
-        );
-
-    }
-);
-
-
-/* ================= RESET ================= */
-
-area.addEventListener(
-    "mouseleave",
-    () => {
-
-        clothing.forEach(
-            item => {
-
-                item.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-);
-
+  // Product 3D modal.
+  const modal=$('#modal'), mm=$('#modalModel'), mn=$('#modalName'), mp=$('#modalPrice'); let current=null;
+  function openModal(item){current=item;mm.src=item.model;mm.alt=item.name+' 3D viewer';mn.textContent=item.name+'.';mp.textContent='$'+item.price;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  $$('.card').forEach((card,i)=>card.querySelector('.view3d').addEventListener('click',()=>openModal(products[i])));
+  $('#close').addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  $$('.size').forEach(btn=>btn.addEventListener('click',()=>{$$('.size').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}));
+  $('#addModal').addEventListener('click',()=>{if(current)addToCart(current)});
+})();
 </script>
-
 </body>
 </html>
